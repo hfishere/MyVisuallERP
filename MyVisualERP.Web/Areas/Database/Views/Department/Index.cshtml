@@ -1,0 +1,45 @@
+﻿@model IEnumerable<My.DAL.dbtodept>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.sDept)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sFile)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.sDept)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sFile)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.iDept }) |
+            @Html.ActionLink("Details", "Details", new { id=item.iDept }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.iDept })
+        </td>
+    </tr>
+}
+
+</table>

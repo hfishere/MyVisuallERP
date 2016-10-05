@@ -25,10 +25,7 @@ namespace My.DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<aspnetrole> aspnetroles { get; set; }
-        public virtual DbSet<aspnetuserclaim> aspnetuserclaims { get; set; }
-        public virtual DbSet<aspnetuserlogin> aspnetuserlogins { get; set; }
-        public virtual DbSet<aspnetuser> aspnetusers { get; set; }
         public virtual DbSet<dbemployee> dbemployees { get; set; }
+        public virtual DbSet<dbtodept> dbtodepts { get; set; }
     }
 }

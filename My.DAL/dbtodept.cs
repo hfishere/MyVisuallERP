@@ -12,12 +12,11 @@ namespace My.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class aspnetuserlogin
+    public partial class dbtodept
     {
-        public string LoginProvider { get; set; }
-        public string ProviderKey { get; set; }
-        public string UserId { get; set; }
-    
-        public virtual aspnetuser aspnetuser { get; set; }
+        public byte iDept { get; set; }
+        public string sDept { get; set; }
+        public string sNotes { get; set; }
+        public string sFile { get; set; }
     }
 }

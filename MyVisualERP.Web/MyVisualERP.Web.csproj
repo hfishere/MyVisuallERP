@@ -65,6 +65,7 @@
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -181,6 +182,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Database\Controllers\DepartmentController.cs" />
+    <Compile Include="Areas\Database\DatabaseAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminLteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -769,6 +772,18 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\Database\Views\web.config" />
+    <Content Include="Areas\Database\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Database\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Database\Views\Department\Create.cshtml" />
+    <Content Include="Areas\Database\Views\Department\Delete.cshtml" />
+    <Content Include="Areas\Database\Views\Department\Details.cshtml" />
+    <Content Include="Areas\Database\Views\Department\Edit.cshtml" />
+    <Content Include="Areas\Database\Views\Department\Index.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -902,6 +917,7 @@
     <Content Include="Scripts\locales\uk.js" />
     <Content Include="Scripts\locales\zh-TW.js" />
     <Content Include="Scripts\locales\zh.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\plugins\canvas-to-blob.js" />
     <Content Include="Scripts\plugins\canvas-to-blob.min.js" />
@@ -957,10 +973,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Database\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\My.DAL\My.DAL.csproj">
+      <Project>{912e7de1-90b2-45c8-9538-9d698cb1cdd5}</Project>
+      <Name>My.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\My.Repository\My.Repository.csproj">
+      <Project>{222d4b72-4964-49da-b9d2-d301ee6d5568}</Project>
+      <Name>My.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

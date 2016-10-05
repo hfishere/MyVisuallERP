@@ -1,0 +1,42 @@
+﻿@model My.DAL.dbtodept
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>dbtodept</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sDept)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sDept)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sNotes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sFile)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.iDept }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

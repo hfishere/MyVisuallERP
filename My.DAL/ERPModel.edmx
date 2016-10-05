@@ -4,58 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbmyvisualerpModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="aspnetroles">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
-        </EntityType>
-        <EntityType Name="aspnetuserclaims">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="ClaimType" Type="longtext" />
-          <Property Name="ClaimValue" Type="longtext" />
-        </EntityType>
-        <EntityType Name="aspnetuserlogins">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="ProviderKey" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
-        </EntityType>
-        <EntityType Name="aspnetuserroles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="RoleId" Type="varchar" MaxLength="128" Nullable="false" />
-        </EntityType>
-        <EntityType Name="aspnetusers">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="256" />
-          <Property Name="EmailConfirmed" Type="bool" Nullable="false" />
-          <Property Name="PasswordHash" Type="longtext" />
-          <Property Name="SecurityStamp" Type="longtext" />
-          <Property Name="PhoneNumber" Type="longtext" />
-          <Property Name="PhoneNumberConfirmed" Type="bool" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="bool" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="datetime" Precision="0" />
-          <Property Name="LockoutEnabled" Type="bool" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
-        </EntityType>
+    <Schema Namespace="dbmyvisualerpModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="dbemployee">
           <Key>
             <PropertyRef Name="iEmpSysID" />
@@ -88,140 +37,27 @@
           <Property Name="iEmpStat" Type="utinyint" Nullable="false" />
           <Property Name="sPictLink" Type="varchar" MaxLength="200" />
         </EntityType>
-        <Association Name="aspnetuserclaims_ibfk_1">
-          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="aspnetuserclaims" Type="Self.aspnetuserclaims" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aspnetusers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aspnetuserclaims">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="aspnetuserlogins_ibfk_1">
-          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="aspnetuserlogins" Type="Self.aspnetuserlogins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aspnetusers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aspnetuserlogins">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="aspnetuserroles_ibfk_1">
-          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aspnetusers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aspnetuserroles">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="aspnetuserroles_ibfk_2">
-          <End Role="aspnetroles" Type="Self.aspnetroles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aspnetroles">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aspnetuserroles">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="dbtodept">
+          <Key>
+            <PropertyRef Name="iDept" />
+          </Key>
+          <Property Name="iDept" Type="utinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sDept" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="sNotes" Type="mediumtext" />
+          <Property Name="sFile" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityContainer Name="dbmyvisualerpModelStoreContainer">
-          <EntitySet Name="aspnetroles" EntityType="Self.aspnetroles" Schema="dbmyvisualerp" store:Type="Tables" />
-          <EntitySet Name="aspnetuserclaims" EntityType="Self.aspnetuserclaims" Schema="dbmyvisualerp" store:Type="Tables" />
-          <EntitySet Name="aspnetuserlogins" EntityType="Self.aspnetuserlogins" Schema="dbmyvisualerp" store:Type="Tables" />
-          <EntitySet Name="aspnetuserroles" EntityType="Self.aspnetuserroles" Schema="dbmyvisualerp" store:Type="Tables" />
-          <EntitySet Name="aspnetusers" EntityType="Self.aspnetusers" Schema="dbmyvisualerp" store:Type="Tables" />
           <EntitySet Name="dbemployee" EntityType="Self.dbemployee" Schema="dbmyvisualerp" store:Type="Tables" />
-          <AssociationSet Name="aspnetuserclaims_ibfk_1" Association="Self.aspnetuserclaims_ibfk_1">
-            <End Role="aspnetusers" EntitySet="aspnetusers" />
-            <End Role="aspnetuserclaims" EntitySet="aspnetuserclaims" />
-          </AssociationSet>
-          <AssociationSet Name="aspnetuserlogins_ibfk_1" Association="Self.aspnetuserlogins_ibfk_1">
-            <End Role="aspnetusers" EntitySet="aspnetusers" />
-            <End Role="aspnetuserlogins" EntitySet="aspnetuserlogins" />
-          </AssociationSet>
-          <AssociationSet Name="aspnetuserroles_ibfk_1" Association="Self.aspnetuserroles_ibfk_1">
-            <End Role="aspnetusers" EntitySet="aspnetusers" />
-            <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
-          </AssociationSet>
-          <AssociationSet Name="aspnetuserroles_ibfk_2" Association="Self.aspnetuserroles_ibfk_2">
-            <End Role="aspnetroles" EntitySet="aspnetroles" />
-            <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
-          </AssociationSet>
+          <EntitySet Name="dbtodept" EntityType="Self.dbtodept" Schema="dbmyvisualerp" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbmyvisualerpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="aspnetrole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="aspnetusers" Relationship="Self.aspnetuserroles" FromRole="aspnetroles" ToRole="aspnetusers" />
-        </EntityType>
-        <EntityType Name="aspnetuserclaim">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ClaimType" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Name="ClaimValue" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="aspnetuser" Relationship="Self.aspnetuserclaims_ibfk_1" FromRole="aspnetuserclaims" ToRole="aspnetusers" />
-        </EntityType>
-        <EntityType Name="aspnetuserlogin">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="aspnetuser" Relationship="Self.aspnetuserlogins_ibfk_1" FromRole="aspnetuserlogins" ToRole="aspnetusers" />
-        </EntityType>
-        <EntityType Name="aspnetuser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="aspnetuserclaims" Relationship="Self.aspnetuserclaims_ibfk_1" FromRole="aspnetusers" ToRole="aspnetuserclaims" />
-          <NavigationProperty Name="aspnetuserlogins" Relationship="Self.aspnetuserlogins_ibfk_1" FromRole="aspnetusers" ToRole="aspnetuserlogins" />
-          <NavigationProperty Name="aspnetroles" Relationship="Self.aspnetuserroles" FromRole="aspnetusers" ToRole="aspnetroles" />
-        </EntityType>
+        <EntityContainer Name="ERPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dbemployees" EntityType="dbmyvisualerpModel.dbemployee" />
+          <EntitySet Name="dbtodepts" EntityType="dbmyvisualerpModel.dbtodept" />
+        </EntityContainer>
         <EntityType Name="dbemployee">
           <Key>
             <PropertyRef Name="iEmpSysID" />
@@ -254,149 +90,64 @@
           <Property Name="iEmpStat" Type="Byte" Nullable="false" />
           <Property Name="sPictLink" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="aspnetuserclaims_ibfk_1">
-          <End Role="aspnetusers" Type="Self.aspnetuser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="aspnetuserclaims" Type="Self.aspnetuserclaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aspnetusers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aspnetuserclaims">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="aspnetuserlogins_ibfk_1">
-          <End Role="aspnetusers" Type="Self.aspnetuser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="aspnetuserlogins" Type="Self.aspnetuserlogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aspnetusers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aspnetuserlogins">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="aspnetuserroles">
-          <End Role="aspnetusers" Type="Self.aspnetuser" Multiplicity="*" />
-          <End Role="aspnetroles" Type="Self.aspnetrole" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="ERPEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="aspnetroles" EntityType="Self.aspnetrole" />
-          <EntitySet Name="aspnetuserclaims" EntityType="Self.aspnetuserclaim" />
-          <EntitySet Name="aspnetuserlogins" EntityType="Self.aspnetuserlogin" />
-          <EntitySet Name="aspnetusers" EntityType="Self.aspnetuser" />
-          <EntitySet Name="dbemployees" EntityType="Self.dbemployee" />
-          <AssociationSet Name="aspnetuserclaims_ibfk_1" Association="Self.aspnetuserclaims_ibfk_1">
-            <End Role="aspnetusers" EntitySet="aspnetusers" />
-            <End Role="aspnetuserclaims" EntitySet="aspnetuserclaims" />
-          </AssociationSet>
-          <AssociationSet Name="aspnetuserlogins_ibfk_1" Association="Self.aspnetuserlogins_ibfk_1">
-            <End Role="aspnetusers" EntitySet="aspnetusers" />
-            <End Role="aspnetuserlogins" EntitySet="aspnetuserlogins" />
-          </AssociationSet>
-          <AssociationSet Name="aspnetuserroles" Association="Self.aspnetuserroles">
-            <End Role="aspnetusers" EntitySet="aspnetusers" />
-            <End Role="aspnetroles" EntitySet="aspnetroles" />
-          </AssociationSet>
-        </EntityContainer>
+        <EntityType Name="dbtodept">
+          <Key>
+            <PropertyRef Name="iDept" />
+          </Key>
+          <Property Name="iDept" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sDept" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="sNotes" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="sFile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="dbmyvisualerpModelStoreContainer" CdmEntityContainer="ERPEntities">
-          <EntitySetMapping Name="aspnetroles">
-            <EntityTypeMapping TypeName="dbmyvisualerpModel.aspnetrole">
-              <MappingFragment StoreEntitySet="aspnetroles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="aspnetuserclaims">
-            <EntityTypeMapping TypeName="dbmyvisualerpModel.aspnetuserclaim">
-              <MappingFragment StoreEntitySet="aspnetuserclaims">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="aspnetuserlogins">
-            <EntityTypeMapping TypeName="dbmyvisualerpModel.aspnetuserlogin">
-              <MappingFragment StoreEntitySet="aspnetuserlogins">
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="aspnetusers">
-            <EntityTypeMapping TypeName="dbmyvisualerpModel.aspnetuser">
-              <MappingFragment StoreEntitySet="aspnetusers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="dbemployees">
             <EntityTypeMapping TypeName="dbmyvisualerpModel.dbemployee">
               <MappingFragment StoreEntitySet="dbemployee">
-                <ScalarProperty Name="iEmpSysID" ColumnName="iEmpSysID" />
-                <ScalarProperty Name="sEmpAttdID" ColumnName="sEmpAttdID" />
-                <ScalarProperty Name="sEmpCardNumber" ColumnName="sEmpCardNumber" />
-                <ScalarProperty Name="sEmpOtherNumber" ColumnName="sEmpOtherNumber" />
-                <ScalarProperty Name="sEmpName" ColumnName="sEmpName" />
-                <ScalarProperty Name="sEmpGenIdentNum" ColumnName="sEmpGenIdentNum" />
-                <ScalarProperty Name="iEmpGender" ColumnName="iEmpGender" />
-                <ScalarProperty Name="iEmpMaritalStat" ColumnName="iEmpMaritalStat" />
-                <ScalarProperty Name="iEmpReligion" ColumnName="iEmpReligion" />
-                <ScalarProperty Name="iEmpLastEdu" ColumnName="iEmpLastEdu" />
-                <ScalarProperty Name="sEmpHTown" ColumnName="sEmpHTown" />
-                <ScalarProperty Name="dEmpBirth" ColumnName="dEmpBirth" />
-                <ScalarProperty Name="iSmokers" ColumnName="iSmokers" />
-                <ScalarProperty Name="sEmpAddress" ColumnName="sEmpAddress" />
-                <ScalarProperty Name="sEmpPhone" ColumnName="sEmpPhone" />
-                <ScalarProperty Name="sEmpHP" ColumnName="sEmpHP" />
-                <ScalarProperty Name="sEmpWKPh" ColumnName="sEmpWKPh" />
-                <ScalarProperty Name="sEmpWorkMail" ColumnName="sEmpWorkMail" />
-                <ScalarProperty Name="sEmpPersonalMail" ColumnName="sEmpPersonalMail" />
-                <ScalarProperty Name="iDept" ColumnName="iDept" />
-                <ScalarProperty Name="iGrade" ColumnName="iGrade" />
-                <ScalarProperty Name="iJob" ColumnName="iJob" />
-                <ScalarProperty Name="iBldSysID" ColumnName="iBldSysID" />
-                <ScalarProperty Name="iRmSysID" ColumnName="iRmSysID" />
-                <ScalarProperty Name="dEmpJn" ColumnName="dEmpJn" />
-                <ScalarProperty Name="iEmpStat" ColumnName="iEmpStat" />
                 <ScalarProperty Name="sPictLink" ColumnName="sPictLink" />
+                <ScalarProperty Name="iEmpStat" ColumnName="iEmpStat" />
+                <ScalarProperty Name="dEmpJn" ColumnName="dEmpJn" />
+                <ScalarProperty Name="iRmSysID" ColumnName="iRmSysID" />
+                <ScalarProperty Name="iBldSysID" ColumnName="iBldSysID" />
+                <ScalarProperty Name="iJob" ColumnName="iJob" />
+                <ScalarProperty Name="iGrade" ColumnName="iGrade" />
+                <ScalarProperty Name="iDept" ColumnName="iDept" />
+                <ScalarProperty Name="sEmpPersonalMail" ColumnName="sEmpPersonalMail" />
+                <ScalarProperty Name="sEmpWorkMail" ColumnName="sEmpWorkMail" />
+                <ScalarProperty Name="sEmpWKPh" ColumnName="sEmpWKPh" />
+                <ScalarProperty Name="sEmpHP" ColumnName="sEmpHP" />
+                <ScalarProperty Name="sEmpPhone" ColumnName="sEmpPhone" />
+                <ScalarProperty Name="sEmpAddress" ColumnName="sEmpAddress" />
+                <ScalarProperty Name="iSmokers" ColumnName="iSmokers" />
+                <ScalarProperty Name="dEmpBirth" ColumnName="dEmpBirth" />
+                <ScalarProperty Name="sEmpHTown" ColumnName="sEmpHTown" />
+                <ScalarProperty Name="iEmpLastEdu" ColumnName="iEmpLastEdu" />
+                <ScalarProperty Name="iEmpReligion" ColumnName="iEmpReligion" />
+                <ScalarProperty Name="iEmpMaritalStat" ColumnName="iEmpMaritalStat" />
+                <ScalarProperty Name="iEmpGender" ColumnName="iEmpGender" />
+                <ScalarProperty Name="sEmpGenIdentNum" ColumnName="sEmpGenIdentNum" />
+                <ScalarProperty Name="sEmpName" ColumnName="sEmpName" />
+                <ScalarProperty Name="sEmpOtherNumber" ColumnName="sEmpOtherNumber" />
+                <ScalarProperty Name="sEmpCardNumber" ColumnName="sEmpCardNumber" />
+                <ScalarProperty Name="sEmpAttdID" ColumnName="sEmpAttdID" />
+                <ScalarProperty Name="iEmpSysID" ColumnName="iEmpSysID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="aspnetuserroles" TypeName="dbmyvisualerpModel.aspnetuserroles" StoreEntitySet="aspnetuserroles">
-            <EndProperty Name="aspnetusers">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="aspnetroles">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="dbtodepts">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtodept">
+              <MappingFragment StoreEntitySet="dbtodept">
+                <ScalarProperty Name="sFile" ColumnName="sFile" />
+                <ScalarProperty Name="sNotes" ColumnName="sNotes" />
+                <ScalarProperty Name="sDept" ColumnName="sDept" />
+                <ScalarProperty Name="iDept" ColumnName="iDept" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

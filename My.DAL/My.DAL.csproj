@@ -54,19 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aspnetrole.cs">
-      <DependentUpon>ERPModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="aspnetuser.cs">
-      <DependentUpon>ERPModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="aspnetuserclaim.cs">
-      <DependentUpon>ERPModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="aspnetuserlogin.cs">
-      <DependentUpon>ERPModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="dbemployee.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbtodept.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ERPModel.Context.cs">
