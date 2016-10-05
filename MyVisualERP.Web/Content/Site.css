@@ -1,0 +1,251 @@
+﻿@font-face {
+    font-family: 'SourceSansPro-Semibold';
+    src: url('../../fonts/SourceSansPro-Semibold.ttf') format('truetype');
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*Resizing Modal Large*/
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 900px;
+  }
+}
+
+/* Custom Toggle*/
+.custom-toggle {
+  position: relative;
+  float: left;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  border-color: #ddd;
+}
+.custom-toggle:focus {
+  outline: 0;
+  background-color: #ddd;
+}
+.custom-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #888;
+}
+.custom-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+.custom-toggle:hover {
+  background-color: #ddd;
+}
+
+@media (min-width: 768px) {
+  .custom-toggle {
+    display: none;
+  }
+}
+
+/* Custom Collapse */
+.custom-collapse {
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+.custom-collapse.in {
+  overflow-y: auto;
+}
+@media (min-width: 768px) {
+    .custom-collapse {
+        width: auto;
+        border-top: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+        .custom-collapse.collapse {
+            display: block !important;
+            height: auto !important;
+            padding-bottom: 0;
+            overflow: visible !important;
+        }
+
+        .custom-collapse.in {
+            overflow-y: visible;
+        }
+}
+
+/* Custom FileInput*/
+.kv-avatar .file-preview-frame,.kv-avatar .file-preview-frame:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+
+.kv-avatar .file-input {
+    display: table-cell;
+    max-width: 220px
+}
+
+/* Custom open user dropdown*/
+nav li:hover a {
+    background: #ccc;
+}
+nav li ul {
+    float: left;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 35px;
+    visibility: hidden;
+    z-index: 1;
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+}
+nav li:hover ul {
+    opacity: 1;
+    top: 50px;
+    visibility: visible;
+}
+nav li ul li {
+    float: none;
+    width: 100%;
+}
+nav li ul a:hover {
+    background: #bbb;
+}
+
+/* Clearfix */
+.cf:after, .cf:before {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+
+ul.dropdown-menu {
+    border: solid;    
+}
+
+/*****************/
+#wrapper {
+    float:left;
+    position:relative;
+    width:640px;
+    margin:0;
+    padding:20px 50px 20px 50px;
+}
+#navigation {
+    float:left;
+    width:100%;
+    margin:0;
+    padding:0;
+}
+#navigation-sub {
+    float:left;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:16px;
+    background-color:#69C;
+    margin:0;
+    padding:6px 15px 7px 15px;
+}
+#navigation-sub:hover {
+    background-color:#C66;
+}
+#navigation-sub:active {
+    background-color:#eeeeee;
+}
+#navigation-dropdown {
+    position: absolute;
+    top: 50px;
+    background-color:#eeeeee;
+    border:#69C 4px solid;
+    margin:0;
+    padding:15px 15px 15px 30px;
+    /*This here*/
+    -webkit-transition: 3s ease-out;
+    -moz-transition: 3s ease-out;
+    transition: 3s ease-out;
+}
+.hide {
+    opacity: 0;
+    height: 0 !important;
+}
+#navigation-dropdown ul {
+    float:left;
+    width:150px;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+#navigation-dropdown ul li {
+    float:left;
+    width:100%;
+    font-size:14px;
+    line-height:24px;
+    margin:0;
+    padding:0;
+}
+#navigation-dropdown ul li a {
+    color:#69C;
+    text-decoration:none;
+}
+#navigation-dropdown ul li a:hover {
+    text-decoration:underline;
+}
+#navigation-dropdown ul li a:active {
+    color:#dddddd;
+}
+#navigation-dropdown input {
+    float:left;
+    cursor:pointer;
+    color:#333333;
+    font-size:14px;
+    font-family:Arial, sans-serif;
+}
+
+/* Admin LTE with Bootstrap 3.3.7 */
+.main-header .sidebar-toggle {
+    padding: 14px 15px;
+}
+
+/* Search input jquery.datatables*/
+/*div.dataTables_wrapper div.dataTables_filter input[type="search"][aria-controls="tblEmployee"] {
+    width: 280px;
+}*/
+
+input[type="search"]:focus {
+    background-color: aliceblue;
+}
