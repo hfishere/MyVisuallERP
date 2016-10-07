@@ -10,6 +10,7 @@ using My.DAL;
 
 namespace MyVisualERP.Web.Areas.Database.Controllers
 {
+    [Authorize]
     public class DepartmentController : Controller
     {
         private ERPEntities db = new ERPEntities();
