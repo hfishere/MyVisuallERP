@@ -28,5 +28,6 @@ namespace My.DAL
         public virtual DbSet<dbemployee> dbemployees { get; set; }
         public virtual DbSet<dbtodept> dbtodepts { get; set; }
         public virtual DbSet<dbtutorial> dbtutorials { get; set; }
+        public virtual DbSet<dbempstat> dbempstats { get; set; }
     }
 }

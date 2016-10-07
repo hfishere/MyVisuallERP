@@ -1,7 +1,7 @@
-﻿@model IEnumerable<My.DAL.dbtutorial>
+﻿@model IEnumerable<My.DAL.dbempstat>
 
 @{
-    ViewBag.Title = "Tutorial"; <!-- Ganti sesuai dengan nama controller-->
+    ViewBag.Title = "Employee Status";
 }
 
 <!-- Insert section styles -->
@@ -10,17 +10,9 @@
     <link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 }
 
-<!-- <h2>Index</h2>  //Hapus Bagian ini-->
-<!-- Hapus Bagian ini
-<p>
-    @*  @Html.ActionLink("Create New", "Create")   *@
-</p> (step 1)
--->
-
-<!-- Ganti dengan ini -->
 <div class="box box-success">
     <div class="box-header with-border">
-        <h3 class="box-title">List of Tutorials</h3> <!-- Ganti textnya (step 3)-->
+        <h3 class="box-title">List of Employee Status</h3>
     </div>
     <div class="box-body">
         <p>
@@ -29,43 +21,40 @@
             </a>
         </p> <!-- Sampai sini-->
 
-        <table class="table table-bordered table-hover nowrap"><!-- Tambahin table-bordered, table-hover, dan nowrap -->
+
+        <table class="table table-bordered table-hover nowrap">
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.sName) <!-- Ini text di Head, Bisa diganti-->
+                        Employee Status
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.sAddress) <!-- Ini text di Head, Bisa diganti -->
+                        Action
                     </th>
-                    <th>Action</th> <!-- Untuk nambahin head Action-->
                 </tr>
             </thead>
+
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.sName)
+                            @Html.DisplayFor(modelItem => item.sEmpStat)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.sAddress)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.pID }, new { @class = "btn btn-primary btn-xs" })
-                            @Html.ActionLink("Details", "Details", new { id = item.pID }, new { @class = "btn btn-success btn-xs" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.pID }, new { @class = "btn btn-danger btn-xs" })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.iEmpStat }, new { @class = "btn btn-primary btn-xs" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.iEmpStat }, new { @class = "btn btn-success btn-xs" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.iEmpStat }, new { @class = "btn btn-danger btn-xs" })
                         </td>
                     </tr>
                 }
             </tbody>
-
         </table>
-    <!-- Copy Bagian bawah ini -->
-        </div> <!----/.box-body --> 
+        <!-- Cut Bagian bawah ini -->
+    </div><!-- /.box-body -->
 </div> <!-- Sampai sini -->
 
-<!-- Insert section scripts -->
+<!-- Insert section scripts Eko -->
 @section scripts {
     <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
