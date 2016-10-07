@@ -183,6 +183,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Database\Controllers\DepartmentController.cs" />
+    <Compile Include="Areas\Database\Controllers\TutorialController.cs" />
     <Compile Include="Areas\Database\DatabaseAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminLteController.cs" />
@@ -780,6 +781,11 @@
     <Content Include="Areas\Database\Views\Department\Details.cshtml" />
     <Content Include="Areas\Database\Views\Department\Edit.cshtml" />
     <Content Include="Areas\Database\Views\Department\Index.cshtml" />
+    <Content Include="Areas\Database\Views\Tutorial\Create.cshtml" />
+    <Content Include="Areas\Database\Views\Tutorial\Delete.cshtml" />
+    <Content Include="Areas\Database\Views\Tutorial\Details.cshtml" />
+    <Content Include="Areas\Database\Views\Tutorial\Edit.cshtml" />
+    <Content Include="Areas\Database\Views\Tutorial\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
