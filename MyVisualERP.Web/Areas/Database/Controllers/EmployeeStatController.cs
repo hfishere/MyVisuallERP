@@ -10,108 +10,107 @@ using My.DAL;
 
 namespace MyVisualERP.Web.Areas.Database.Controllers
 {
-    [Authorize]
-    public class DepartmentController : Controller
+    public class EmployeeStatController : Controller
     {
         private ERPEntities db = new ERPEntities();
 
-        // GET: Database/Department
+        // GET: Database/EmployeeStat
         public ActionResult Index()
         {
-            return View(db.dbtodepts.ToList());
+            return View(db.dbempstats.ToList());
         }
 
-        // GET: Database/Department/Details/5
+        // GET: Database/EmployeeStat/Details/5
         public ActionResult Details(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            dbtodept dbtodept = db.dbtodepts.Find(id);
-            if (dbtodept == null)
+            dbempstat dbempstat = db.dbempstats.Find(id);
+            if (dbempstat == null)
             {
                 return HttpNotFound();
             }
-            return View(dbtodept);
+            return View(dbempstat);
         }
 
-        // GET: Database/Department/Create
+        // GET: Database/EmployeeStat/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Database/Department/Create
+        // POST: Database/EmployeeStat/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "iDept,sDept,sNotes,sFile")] dbtodept dbtodept)
+        public ActionResult Create([Bind(Include = "iEmpStat,sEmpStat")] dbempstat dbempstat)
         {
             if (ModelState.IsValid)
             {
-                db.dbtodepts.Add(dbtodept);
+                db.dbempstats.Add(dbempstat);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(dbtodept);
+            return View(dbempstat);
         }
 
-        // GET: Database/Department/Edit/5
+        // GET: Database/EmployeeStat/Edit/5
         public ActionResult Edit(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            dbtodept dbtodept = db.dbtodepts.Find(id);
-            if (dbtodept == null)
+            dbempstat dbempstat = db.dbempstats.Find(id);
+            if (dbempstat == null)
             {
                 return HttpNotFound();
             }
-            return View(dbtodept);
+            return View(dbempstat);
         }
 
-        // POST: Database/Department/Edit/5
+        // POST: Database/EmployeeStat/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "iDept,sDept,sNotes,sFile")] dbtodept dbtodept)
+        public ActionResult Edit([Bind(Include = "iEmpStat,sEmpStat")] dbempstat dbempstat)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dbtodept).State = EntityState.Modified;
+                db.Entry(dbempstat).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(dbtodept);
+            return View(dbempstat);
         }
 
-        // GET: Database/Department/Delete/5
+        // GET: Database/EmployeeStat/Delete/5
         public ActionResult Delete(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            dbtodept dbtodept = db.dbtodepts.Find(id);
-            if (dbtodept == null)
+            dbempstat dbempstat = db.dbempstats.Find(id);
+            if (dbempstat == null)
             {
                 return HttpNotFound();
             }
-            return View(dbtodept);
+            return View(dbempstat);
         }
 
-        // POST: Database/Department/Delete/5
+        // POST: Database/EmployeeStat/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
         {
-            dbtodept dbtodept = db.dbtodepts.Find(id);
-            db.dbtodepts.Remove(dbtodept);
+            dbempstat dbempstat = db.dbempstats.Find(id);
+            db.dbempstats.Remove(dbempstat);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

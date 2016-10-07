@@ -41,5 +41,6 @@ namespace My.DAL
         public virtual DbSet<dbtoreligion> dbtoreligions { get; set; }
         public virtual DbSet<dbtovhcl> dbtovhcls { get; set; }
         public virtual DbSet<dbtutorial> dbtutorials { get; set; }
+        public virtual DbSet<dbempstat> dbempstats { get; set; }
     }
 }
