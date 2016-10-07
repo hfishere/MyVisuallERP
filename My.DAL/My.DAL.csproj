@@ -54,10 +54,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dbbuilding.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbcourier.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="dbemployee.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="dbempstat.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbroom.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbtodelarea.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="dbtodept.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbtoflag.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbtogender.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbtograde.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbtojob.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbtolasteducation.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbtomaritalstat.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbtoreligion.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbtovhcl.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="dbtutorial.cs">

@@ -5,6 +5,27 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="dbmyvisualerpModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dbbuilding">
+          <Key>
+            <PropertyRef Name="iBldSysID" />
+          </Key>
+          <Property Name="iBldSysID" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sBldName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="sBldAddress" Type="mediumtext" />
+          <Property Name="iBldStatus" Type="utinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbcourier">
+          <Key>
+            <PropertyRef Name="iCrSysID" />
+          </Key>
+          <Property Name="iCrSysID" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="iEmpSysID" Type="uint" />
+          <Property Name="sCr_ID" Type="char" MaxLength="6" />
+          <Property Name="iAreaID" Type="utinyint" />
+          <Property Name="iVh_ID" Type="utinyint" />
+          <Property Name="iInsntive" Type="utinyint" />
+          <Property Name="iOprShift" Type="utinyint" />
+        </EntityType>
         <EntityType Name="dbemployee">
           <Key>
             <PropertyRef Name="iEmpSysID" />
@@ -32,10 +53,33 @@
           <Property Name="iGrade" Type="utinyint" Nullable="false" />
           <Property Name="iJob" Type="utinyint" />
           <Property Name="iBldSysID" Type="usmallint" Nullable="false" />
-          <Property Name="iRmSysID" Type="usmallint" Nullable="false" />
+          <Property Name="iRmSysID" Type="usmallint" />
           <Property Name="dEmpJn" Type="date" />
           <Property Name="iEmpStat" Type="utinyint" Nullable="false" />
           <Property Name="sPictLink" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="dbempstat">
+          <Key>
+            <PropertyRef Name="iEmpStat" />
+          </Key>
+          <Property Name="iEmpStat" Type="utinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sEmpStat" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="dbroom">
+          <Key>
+            <PropertyRef Name="iRmSysID" />
+          </Key>
+          <Property Name="iRmSysID" Type="usmallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="iBldSysID" Type="usmallint" Nullable="false" />
+          <Property Name="sRmName" Type="varchar" MaxLength="45" />
+          <Property Name="sNots" Type="mediumtext" />
+        </EntityType>
+        <EntityType Name="dbtodelarea">
+          <Key>
+            <PropertyRef Name="iAreaID" />
+          </Key>
+          <Property Name="iAreaID" Type="utinyint" Nullable="false" />
+          <Property Name="sAreaID" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="dbtodept">
           <Key>
@@ -46,6 +90,65 @@
           <Property Name="sNotes" Type="mediumtext" />
           <Property Name="sFile" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="dbtoflag">
+          <Key>
+            <PropertyRef Name="iFlag" />
+          </Key>
+          <Property Name="iFlag" Type="utinyint" Nullable="false" />
+          <Property Name="sFlag" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="dbtogender">
+          <Key>
+            <PropertyRef Name="iGender" />
+          </Key>
+          <Property Name="iGender" Type="utinyint" Nullable="false" />
+          <Property Name="sGender" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbtograde">
+          <Key>
+            <PropertyRef Name="iGrade" />
+          </Key>
+          <Property Name="iGrade" Type="utinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sGrade" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbtojobs">
+          <Key>
+            <PropertyRef Name="iJob" />
+          </Key>
+          <Property Name="iJob" Type="utinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="iDept" Type="utinyint" Nullable="false" />
+          <Property Name="sJobName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="sNotes" Type="mediumtext" />
+          <Property Name="sFile" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="dbtolasteducation">
+          <Key>
+            <PropertyRef Name="iLastEdu" />
+          </Key>
+          <Property Name="iLastEdu" Type="utinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sLastEdu" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbtomaritalstat">
+          <Key>
+            <PropertyRef Name="iMaritalStat" />
+          </Key>
+          <Property Name="iMaritalStat" Type="utinyint" Nullable="false" />
+          <Property Name="sMaritalStat" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbtoreligion">
+          <Key>
+            <PropertyRef Name="iReligion" />
+          </Key>
+          <Property Name="iReligion" Type="utinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sReligion" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbtovhcl">
+          <Key>
+            <PropertyRef Name="iVh_ID" />
+          </Key>
+          <Property Name="iVh_ID" Type="utinyint" Nullable="false" />
+          <Property Name="sVh_Desc" Type="varchar" MaxLength="15" />
+        </EntityType>
         <EntityType Name="dbtutorial">
           <Key>
             <PropertyRef Name="pID" />
@@ -54,20 +157,374 @@
           <Property Name="sName" Type="varchar" MaxLength="30" />
           <Property Name="sAddress" Type="varchar" MaxLength="75" />
         </EntityType>
+        <Association Name="dbcourier_ibfk_1">
+          <End Role="dbtodelarea" Type="Self.dbtodelarea" Multiplicity="0..1" />
+          <End Role="dbcourier" Type="Self.dbcourier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtodelarea">
+              <PropertyRef Name="iAreaID" />
+            </Principal>
+            <Dependent Role="dbcourier">
+              <PropertyRef Name="iAreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbcourier_ibfk_2">
+          <End Role="dbtovhcl" Type="Self.dbtovhcl" Multiplicity="0..1" />
+          <End Role="dbcourier" Type="Self.dbcourier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtovhcl">
+              <PropertyRef Name="iVh_ID" />
+            </Principal>
+            <Dependent Role="dbcourier">
+              <PropertyRef Name="iVh_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbcourier_ibfk_3">
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="0..1" />
+          <End Role="dbcourier" Type="Self.dbcourier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbemployee">
+              <PropertyRef Name="iEmpSysID" />
+            </Principal>
+            <Dependent Role="dbcourier">
+              <PropertyRef Name="iEmpSysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_1">
+          <End Role="dbtogender" Type="Self.dbtogender" Multiplicity="1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtogender">
+              <PropertyRef Name="iGender" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iEmpGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_10">
+          <End Role="dbempstat" Type="Self.dbempstat" Multiplicity="1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbempstat">
+              <PropertyRef Name="iEmpStat" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iEmpStat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_2">
+          <End Role="dbtomaritalstat" Type="Self.dbtomaritalstat" Multiplicity="1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtomaritalstat">
+              <PropertyRef Name="iMaritalStat" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iEmpMaritalStat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_3">
+          <End Role="dbtoreligion" Type="Self.dbtoreligion" Multiplicity="1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtoreligion">
+              <PropertyRef Name="iReligion" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iEmpReligion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_4">
+          <End Role="dbtolasteducation" Type="Self.dbtolasteducation" Multiplicity="1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtolasteducation">
+              <PropertyRef Name="iLastEdu" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iEmpLastEdu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_5">
+          <End Role="dbtodept" Type="Self.dbtodept" Multiplicity="1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtodept">
+              <PropertyRef Name="iDept" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iDept" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_6">
+          <End Role="dbtojobs" Type="Self.dbtojobs" Multiplicity="0..1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtojobs">
+              <PropertyRef Name="iJob" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iJob" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_7">
+          <End Role="dbtograde" Type="Self.dbtograde" Multiplicity="1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtograde">
+              <PropertyRef Name="iGrade" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iGrade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_8">
+          <End Role="dbbuilding" Type="Self.dbbuilding" Multiplicity="1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbbuilding">
+              <PropertyRef Name="iBldSysID" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iBldSysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_9">
+          <End Role="dbroom" Type="Self.dbroom" Multiplicity="0..1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbroom">
+              <PropertyRef Name="iRmSysID" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iRmSysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbroom_ibfk_1">
+          <End Role="dbbuilding" Type="Self.dbbuilding" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="dbroom" Type="Self.dbroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbbuilding">
+              <PropertyRef Name="iBldSysID" />
+            </Principal>
+            <Dependent Role="dbroom">
+              <PropertyRef Name="iBldSysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbtojobs_ibfk_1">
+          <End Role="dbtodept" Type="Self.dbtodept" Multiplicity="1" />
+          <End Role="dbtojobs" Type="Self.dbtojobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtodept">
+              <PropertyRef Name="iDept" />
+            </Principal>
+            <Dependent Role="dbtojobs">
+              <PropertyRef Name="iDept" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="dbmyvisualerpModelStoreContainer">
+          <EntitySet Name="dbbuilding" EntityType="Self.dbbuilding" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbcourier" EntityType="Self.dbcourier" Schema="dbmyvisualerp" store:Type="Tables" />
           <EntitySet Name="dbemployee" EntityType="Self.dbemployee" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbempstat" EntityType="Self.dbempstat" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbroom" EntityType="Self.dbroom" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbtodelarea" EntityType="Self.dbtodelarea" Schema="dbmyvisualerp" store:Type="Tables" />
           <EntitySet Name="dbtodept" EntityType="Self.dbtodept" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbtoflag" EntityType="Self.dbtoflag" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbtogender" EntityType="Self.dbtogender" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbtograde" EntityType="Self.dbtograde" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbtojobs" EntityType="Self.dbtojobs" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbtolasteducation" EntityType="Self.dbtolasteducation" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbtomaritalstat" EntityType="Self.dbtomaritalstat" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbtoreligion" EntityType="Self.dbtoreligion" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbtovhcl" EntityType="Self.dbtovhcl" Schema="dbmyvisualerp" store:Type="Tables" />
           <EntitySet Name="dbtutorial" EntityType="Self.dbtutorial" Schema="dbmyvisualerp" store:Type="Tables" />
+          <AssociationSet Name="dbcourier_ibfk_1" Association="Self.dbcourier_ibfk_1">
+            <End Role="dbtodelarea" EntitySet="dbtodelarea" />
+            <End Role="dbcourier" EntitySet="dbcourier" />
+          </AssociationSet>
+          <AssociationSet Name="dbcourier_ibfk_2" Association="Self.dbcourier_ibfk_2">
+            <End Role="dbtovhcl" EntitySet="dbtovhcl" />
+            <End Role="dbcourier" EntitySet="dbcourier" />
+          </AssociationSet>
+          <AssociationSet Name="dbcourier_ibfk_3" Association="Self.dbcourier_ibfk_3">
+            <End Role="dbemployee" EntitySet="dbemployee" />
+            <End Role="dbcourier" EntitySet="dbcourier" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_1" Association="Self.dbemployee_ibfk_1">
+            <End Role="dbtogender" EntitySet="dbtogender" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_10" Association="Self.dbemployee_ibfk_10">
+            <End Role="dbempstat" EntitySet="dbempstat" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_2" Association="Self.dbemployee_ibfk_2">
+            <End Role="dbtomaritalstat" EntitySet="dbtomaritalstat" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_3" Association="Self.dbemployee_ibfk_3">
+            <End Role="dbtoreligion" EntitySet="dbtoreligion" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_4" Association="Self.dbemployee_ibfk_4">
+            <End Role="dbtolasteducation" EntitySet="dbtolasteducation" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_5" Association="Self.dbemployee_ibfk_5">
+            <End Role="dbtodept" EntitySet="dbtodept" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_6" Association="Self.dbemployee_ibfk_6">
+            <End Role="dbtojobs" EntitySet="dbtojobs" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_7" Association="Self.dbemployee_ibfk_7">
+            <End Role="dbtograde" EntitySet="dbtograde" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_8" Association="Self.dbemployee_ibfk_8">
+            <End Role="dbbuilding" EntitySet="dbbuilding" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_9" Association="Self.dbemployee_ibfk_9">
+            <End Role="dbroom" EntitySet="dbroom" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
+          <AssociationSet Name="dbroom_ibfk_1" Association="Self.dbroom_ibfk_1">
+            <End Role="dbbuilding" EntitySet="dbbuilding" />
+            <End Role="dbroom" EntitySet="dbroom" />
+          </AssociationSet>
+          <AssociationSet Name="dbtojobs_ibfk_1" Association="Self.dbtojobs_ibfk_1">
+            <End Role="dbtodept" EntitySet="dbtodept" />
+            <End Role="dbtojobs" EntitySet="dbtojobs" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbmyvisualerpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ERPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dbbuildings" EntityType="dbmyvisualerpModel.dbbuilding" />
+          <EntitySet Name="dbcouriers" EntityType="dbmyvisualerpModel.dbcourier" />
           <EntitySet Name="dbemployees" EntityType="dbmyvisualerpModel.dbemployee" />
+          <EntitySet Name="dbempstats" EntityType="dbmyvisualerpModel.dbempstat" />
+          <EntitySet Name="dbrooms" EntityType="dbmyvisualerpModel.dbroom" />
+          <EntitySet Name="dbtodelareas" EntityType="dbmyvisualerpModel.dbtodelarea" />
           <EntitySet Name="dbtodepts" EntityType="dbmyvisualerpModel.dbtodept" />
+          <EntitySet Name="dbtoflags" EntityType="dbmyvisualerpModel.dbtoflag" />
+          <EntitySet Name="dbtogenders" EntityType="dbmyvisualerpModel.dbtogender" />
+          <EntitySet Name="dbtogrades" EntityType="dbmyvisualerpModel.dbtograde" />
+          <EntitySet Name="dbtojobs" EntityType="dbmyvisualerpModel.dbtojob" />
+          <EntitySet Name="dbtolasteducations" EntityType="dbmyvisualerpModel.dbtolasteducation" />
+          <EntitySet Name="dbtomaritalstats" EntityType="dbmyvisualerpModel.dbtomaritalstat" />
+          <EntitySet Name="dbtoreligions" EntityType="dbmyvisualerpModel.dbtoreligion" />
+          <EntitySet Name="dbtovhcls" EntityType="dbmyvisualerpModel.dbtovhcl" />
           <EntitySet Name="dbtutorials" EntityType="dbmyvisualerpModel.dbtutorial" />
+          <AssociationSet Name="dbemployee_ibfk_8" Association="dbmyvisualerpModel.dbemployee_ibfk_8">
+            <End Role="dbbuilding" EntitySet="dbbuildings" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <AssociationSet Name="dbroom_ibfk_1" Association="dbmyvisualerpModel.dbroom_ibfk_1">
+            <End Role="dbbuilding" EntitySet="dbbuildings" />
+            <End Role="dbroom" EntitySet="dbrooms" />
+          </AssociationSet>
+          <AssociationSet Name="dbcourier_ibfk_1" Association="dbmyvisualerpModel.dbcourier_ibfk_1">
+            <End Role="dbtodelarea" EntitySet="dbtodelareas" />
+            <End Role="dbcourier" EntitySet="dbcouriers" />
+          </AssociationSet>
+          <AssociationSet Name="dbcourier_ibfk_2" Association="dbmyvisualerpModel.dbcourier_ibfk_2">
+            <End Role="dbtovhcl" EntitySet="dbtovhcls" />
+            <End Role="dbcourier" EntitySet="dbcouriers" />
+          </AssociationSet>
+          <AssociationSet Name="dbcourier_ibfk_3" Association="dbmyvisualerpModel.dbcourier_ibfk_3">
+            <End Role="dbemployee" EntitySet="dbemployees" />
+            <End Role="dbcourier" EntitySet="dbcouriers" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_1" Association="dbmyvisualerpModel.dbemployee_ibfk_1">
+            <End Role="dbtogender" EntitySet="dbtogenders" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_10" Association="dbmyvisualerpModel.dbemployee_ibfk_10">
+            <End Role="dbempstat" EntitySet="dbempstats" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_2" Association="dbmyvisualerpModel.dbemployee_ibfk_2">
+            <End Role="dbtomaritalstat" EntitySet="dbtomaritalstats" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_3" Association="dbmyvisualerpModel.dbemployee_ibfk_3">
+            <End Role="dbtoreligion" EntitySet="dbtoreligions" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_4" Association="dbmyvisualerpModel.dbemployee_ibfk_4">
+            <End Role="dbtolasteducation" EntitySet="dbtolasteducations" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_5" Association="dbmyvisualerpModel.dbemployee_ibfk_5">
+            <End Role="dbtodept" EntitySet="dbtodepts" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_6" Association="dbmyvisualerpModel.dbemployee_ibfk_6">
+            <End Role="dbtojob" EntitySet="dbtojobs" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_7" Association="dbmyvisualerpModel.dbemployee_ibfk_7">
+            <End Role="dbtograde" EntitySet="dbtogrades" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <AssociationSet Name="dbemployee_ibfk_9" Association="dbmyvisualerpModel.dbemployee_ibfk_9">
+            <End Role="dbroom" EntitySet="dbrooms" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <AssociationSet Name="dbtojobs_ibfk_1" Association="dbmyvisualerpModel.dbtojobs_ibfk_1">
+            <End Role="dbtodept" EntitySet="dbtodepts" />
+            <End Role="dbtojob" EntitySet="dbtojobs" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="dbbuilding">
+          <Key>
+            <PropertyRef Name="iBldSysID" />
+          </Key>
+          <Property Name="iBldSysID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sBldName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="sBldAddress" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="iBldStatus" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_8" FromRole="dbbuilding" ToRole="dbemployee" />
+          <NavigationProperty Name="dbrooms" Relationship="dbmyvisualerpModel.dbroom_ibfk_1" FromRole="dbbuilding" ToRole="dbroom" />
+        </EntityType>
+        <EntityType Name="dbcourier">
+          <Key>
+            <PropertyRef Name="iCrSysID" />
+          </Key>
+          <Property Name="iCrSysID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="iEmpSysID" Type="Int64" />
+          <Property Name="sCr_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="iAreaID" Type="Byte" />
+          <Property Name="iVh_ID" Type="Byte" />
+          <Property Name="iInsntive" Type="Byte" />
+          <Property Name="iOprShift" Type="Byte" />
+          <NavigationProperty Name="dbtodelarea" Relationship="dbmyvisualerpModel.dbcourier_ibfk_1" FromRole="dbcourier" ToRole="dbtodelarea" />
+          <NavigationProperty Name="dbtovhcl" Relationship="dbmyvisualerpModel.dbcourier_ibfk_2" FromRole="dbcourier" ToRole="dbtovhcl" />
+          <NavigationProperty Name="dbemployee" Relationship="dbmyvisualerpModel.dbcourier_ibfk_3" FromRole="dbcourier" ToRole="dbemployee" />
+        </EntityType>
         <EntityType Name="dbemployee">
           <Key>
             <PropertyRef Name="iEmpSysID" />
@@ -95,10 +552,48 @@
           <Property Name="iGrade" Type="Byte" Nullable="false" />
           <Property Name="iJob" Type="Byte" />
           <Property Name="iBldSysID" Type="Int32" Nullable="false" />
-          <Property Name="iRmSysID" Type="Int32" Nullable="false" />
+          <Property Name="iRmSysID" Type="Int32" />
           <Property Name="dEmpJn" Type="DateTime" />
           <Property Name="iEmpStat" Type="Byte" Nullable="false" />
           <Property Name="sPictLink" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbbuilding" Relationship="dbmyvisualerpModel.dbemployee_ibfk_8" FromRole="dbemployee" ToRole="dbbuilding" />
+          <NavigationProperty Name="dbcouriers" Relationship="dbmyvisualerpModel.dbcourier_ibfk_3" FromRole="dbemployee" ToRole="dbcourier" />
+          <NavigationProperty Name="dbtogender" Relationship="dbmyvisualerpModel.dbemployee_ibfk_1" FromRole="dbemployee" ToRole="dbtogender" />
+          <NavigationProperty Name="dbempstat" Relationship="dbmyvisualerpModel.dbemployee_ibfk_10" FromRole="dbemployee" ToRole="dbempstat" />
+          <NavigationProperty Name="dbtomaritalstat" Relationship="dbmyvisualerpModel.dbemployee_ibfk_2" FromRole="dbemployee" ToRole="dbtomaritalstat" />
+          <NavigationProperty Name="dbtoreligion" Relationship="dbmyvisualerpModel.dbemployee_ibfk_3" FromRole="dbemployee" ToRole="dbtoreligion" />
+          <NavigationProperty Name="dbtolasteducation" Relationship="dbmyvisualerpModel.dbemployee_ibfk_4" FromRole="dbemployee" ToRole="dbtolasteducation" />
+          <NavigationProperty Name="dbtodept" Relationship="dbmyvisualerpModel.dbemployee_ibfk_5" FromRole="dbemployee" ToRole="dbtodept" />
+          <NavigationProperty Name="dbtojob" Relationship="dbmyvisualerpModel.dbemployee_ibfk_6" FromRole="dbemployee" ToRole="dbtojob" />
+          <NavigationProperty Name="dbtograde" Relationship="dbmyvisualerpModel.dbemployee_ibfk_7" FromRole="dbemployee" ToRole="dbtograde" />
+          <NavigationProperty Name="dbroom" Relationship="dbmyvisualerpModel.dbemployee_ibfk_9" FromRole="dbemployee" ToRole="dbroom" />
+        </EntityType>
+        <EntityType Name="dbempstat">
+          <Key>
+            <PropertyRef Name="iEmpStat" />
+          </Key>
+          <Property Name="iEmpStat" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sEmpStat" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_10" FromRole="dbempstat" ToRole="dbemployee" />
+        </EntityType>
+        <EntityType Name="dbroom">
+          <Key>
+            <PropertyRef Name="iRmSysID" />
+          </Key>
+          <Property Name="iRmSysID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="iBldSysID" Type="Int32" Nullable="false" />
+          <Property Name="sRmName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="sNots" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbbuilding" Relationship="dbmyvisualerpModel.dbroom_ibfk_1" FromRole="dbroom" ToRole="dbbuilding" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_9" FromRole="dbroom" ToRole="dbemployee" />
+        </EntityType>
+        <EntityType Name="dbtodelarea">
+          <Key>
+            <PropertyRef Name="iAreaID" />
+          </Key>
+          <Property Name="iAreaID" Type="Byte" Nullable="false" />
+          <Property Name="sAreaID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbcouriers" Relationship="dbmyvisualerpModel.dbcourier_ibfk_1" FromRole="dbtodelarea" ToRole="dbcourier" />
         </EntityType>
         <EntityType Name="dbtodept">
           <Key>
@@ -108,6 +603,75 @@
           <Property Name="sDept" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="sNotes" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
           <Property Name="sFile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_5" FromRole="dbtodept" ToRole="dbemployee" />
+          <NavigationProperty Name="dbtojobs" Relationship="dbmyvisualerpModel.dbtojobs_ibfk_1" FromRole="dbtodept" ToRole="dbtojob" />
+        </EntityType>
+        <EntityType Name="dbtoflag">
+          <Key>
+            <PropertyRef Name="iFlag" />
+          </Key>
+          <Property Name="iFlag" Type="Byte" Nullable="false" />
+          <Property Name="sFlag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dbtogender">
+          <Key>
+            <PropertyRef Name="iGender" />
+          </Key>
+          <Property Name="iGender" Type="Byte" Nullable="false" />
+          <Property Name="sGender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_1" FromRole="dbtogender" ToRole="dbemployee" />
+        </EntityType>
+        <EntityType Name="dbtograde">
+          <Key>
+            <PropertyRef Name="iGrade" />
+          </Key>
+          <Property Name="iGrade" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sGrade" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_7" FromRole="dbtograde" ToRole="dbemployee" />
+        </EntityType>
+        <EntityType Name="dbtojob">
+          <Key>
+            <PropertyRef Name="iJob" />
+          </Key>
+          <Property Name="iJob" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="iDept" Type="Byte" Nullable="false" />
+          <Property Name="sJobName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="sNotes" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="sFile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_6" FromRole="dbtojob" ToRole="dbemployee" />
+          <NavigationProperty Name="dbtodept" Relationship="dbmyvisualerpModel.dbtojobs_ibfk_1" FromRole="dbtojob" ToRole="dbtodept" />
+        </EntityType>
+        <EntityType Name="dbtolasteducation">
+          <Key>
+            <PropertyRef Name="iLastEdu" />
+          </Key>
+          <Property Name="iLastEdu" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sLastEdu" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_4" FromRole="dbtolasteducation" ToRole="dbemployee" />
+        </EntityType>
+        <EntityType Name="dbtomaritalstat">
+          <Key>
+            <PropertyRef Name="iMaritalStat" />
+          </Key>
+          <Property Name="iMaritalStat" Type="Byte" Nullable="false" />
+          <Property Name="sMaritalStat" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_2" FromRole="dbtomaritalstat" ToRole="dbemployee" />
+        </EntityType>
+        <EntityType Name="dbtoreligion">
+          <Key>
+            <PropertyRef Name="iReligion" />
+          </Key>
+          <Property Name="iReligion" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sReligion" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_3" FromRole="dbtoreligion" ToRole="dbemployee" />
+        </EntityType>
+        <EntityType Name="dbtovhcl">
+          <Key>
+            <PropertyRef Name="iVh_ID" />
+          </Key>
+          <Property Name="iVh_ID" Type="Byte" Nullable="false" />
+          <Property Name="sVh_Desc" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbcouriers" Relationship="dbmyvisualerpModel.dbcourier_ibfk_2" FromRole="dbtovhcl" ToRole="dbcourier" />
         </EntityType>
         <EntityType Name="dbtutorial">
           <Key>
@@ -117,12 +681,217 @@
           <Property Name="sName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="sAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
         </EntityType>
-      </Schema>
+        <Association Name="dbemployee_ibfk_8">
+          <End Type="dbmyvisualerpModel.dbbuilding" Role="dbbuilding" Multiplicity="1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbbuilding">
+              <PropertyRef Name="iBldSysID" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iBldSysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbroom_ibfk_1">
+          <End Type="dbmyvisualerpModel.dbbuilding" Role="dbbuilding" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="dbmyvisualerpModel.dbroom" Role="dbroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbbuilding">
+              <PropertyRef Name="iBldSysID" />
+            </Principal>
+            <Dependent Role="dbroom">
+              <PropertyRef Name="iBldSysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbcourier_ibfk_1">
+          <End Type="dbmyvisualerpModel.dbtodelarea" Role="dbtodelarea" Multiplicity="0..1" />
+          <End Type="dbmyvisualerpModel.dbcourier" Role="dbcourier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtodelarea">
+              <PropertyRef Name="iAreaID" />
+            </Principal>
+            <Dependent Role="dbcourier">
+              <PropertyRef Name="iAreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbcourier_ibfk_2">
+          <End Type="dbmyvisualerpModel.dbtovhcl" Role="dbtovhcl" Multiplicity="0..1" />
+          <End Type="dbmyvisualerpModel.dbcourier" Role="dbcourier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtovhcl">
+              <PropertyRef Name="iVh_ID" />
+            </Principal>
+            <Dependent Role="dbcourier">
+              <PropertyRef Name="iVh_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbcourier_ibfk_3">
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="0..1" />
+          <End Type="dbmyvisualerpModel.dbcourier" Role="dbcourier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbemployee">
+              <PropertyRef Name="iEmpSysID" />
+            </Principal>
+            <Dependent Role="dbcourier">
+              <PropertyRef Name="iEmpSysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_1">
+          <End Type="dbmyvisualerpModel.dbtogender" Role="dbtogender" Multiplicity="1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtogender">
+              <PropertyRef Name="iGender" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iEmpGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_10">
+          <End Type="dbmyvisualerpModel.dbempstat" Role="dbempstat" Multiplicity="1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbempstat">
+              <PropertyRef Name="iEmpStat" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iEmpStat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_2">
+          <End Type="dbmyvisualerpModel.dbtomaritalstat" Role="dbtomaritalstat" Multiplicity="1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtomaritalstat">
+              <PropertyRef Name="iMaritalStat" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iEmpMaritalStat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_3">
+          <End Type="dbmyvisualerpModel.dbtoreligion" Role="dbtoreligion" Multiplicity="1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtoreligion">
+              <PropertyRef Name="iReligion" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iEmpReligion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_4">
+          <End Type="dbmyvisualerpModel.dbtolasteducation" Role="dbtolasteducation" Multiplicity="1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtolasteducation">
+              <PropertyRef Name="iLastEdu" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iEmpLastEdu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_5">
+          <End Type="dbmyvisualerpModel.dbtodept" Role="dbtodept" Multiplicity="1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtodept">
+              <PropertyRef Name="iDept" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iDept" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_6">
+          <End Type="dbmyvisualerpModel.dbtojob" Role="dbtojob" Multiplicity="0..1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtojob">
+              <PropertyRef Name="iJob" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iJob" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_7">
+          <End Type="dbmyvisualerpModel.dbtograde" Role="dbtograde" Multiplicity="1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtograde">
+              <PropertyRef Name="iGrade" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iGrade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbemployee_ibfk_9">
+          <End Type="dbmyvisualerpModel.dbroom" Role="dbroom" Multiplicity="0..1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbroom">
+              <PropertyRef Name="iRmSysID" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iRmSysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="dbtojobs_ibfk_1">
+          <End Type="dbmyvisualerpModel.dbtodept" Role="dbtodept" Multiplicity="1" />
+          <End Type="dbmyvisualerpModel.dbtojob" Role="dbtojob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtodept">
+              <PropertyRef Name="iDept" />
+            </Principal>
+            <Dependent Role="dbtojob">
+              <PropertyRef Name="iDept" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="dbmyvisualerpModelStoreContainer" CdmEntityContainer="ERPEntities">
+          <EntitySetMapping Name="dbbuildings">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbbuilding">
+              <MappingFragment StoreEntitySet="dbbuilding">
+                <ScalarProperty Name="iBldStatus" ColumnName="iBldStatus" />
+                <ScalarProperty Name="sBldAddress" ColumnName="sBldAddress" />
+                <ScalarProperty Name="sBldName" ColumnName="sBldName" />
+                <ScalarProperty Name="iBldSysID" ColumnName="iBldSysID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbcouriers">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbcourier">
+              <MappingFragment StoreEntitySet="dbcourier">
+                <ScalarProperty Name="iOprShift" ColumnName="iOprShift" />
+                <ScalarProperty Name="iInsntive" ColumnName="iInsntive" />
+                <ScalarProperty Name="iVh_ID" ColumnName="iVh_ID" />
+                <ScalarProperty Name="iAreaID" ColumnName="iAreaID" />
+                <ScalarProperty Name="sCr_ID" ColumnName="sCr_ID" />
+                <ScalarProperty Name="iEmpSysID" ColumnName="iEmpSysID" />
+                <ScalarProperty Name="iCrSysID" ColumnName="iCrSysID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="dbemployees">
             <EntityTypeMapping TypeName="dbmyvisualerpModel.dbemployee">
               <MappingFragment StoreEntitySet="dbemployee">
@@ -156,6 +925,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="dbempstats">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbempstat">
+              <MappingFragment StoreEntitySet="dbempstat">
+                <ScalarProperty Name="sEmpStat" ColumnName="sEmpStat" />
+                <ScalarProperty Name="iEmpStat" ColumnName="iEmpStat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbrooms">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbroom">
+              <MappingFragment StoreEntitySet="dbroom">
+                <ScalarProperty Name="sNots" ColumnName="sNots" />
+                <ScalarProperty Name="sRmName" ColumnName="sRmName" />
+                <ScalarProperty Name="iBldSysID" ColumnName="iBldSysID" />
+                <ScalarProperty Name="iRmSysID" ColumnName="iRmSysID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbtodelareas">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtodelarea">
+              <MappingFragment StoreEntitySet="dbtodelarea">
+                <ScalarProperty Name="sAreaID" ColumnName="sAreaID" />
+                <ScalarProperty Name="iAreaID" ColumnName="iAreaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="dbtodepts">
             <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtodept">
               <MappingFragment StoreEntitySet="dbtodept">
@@ -163,6 +958,73 @@
                 <ScalarProperty Name="sNotes" ColumnName="sNotes" />
                 <ScalarProperty Name="sDept" ColumnName="sDept" />
                 <ScalarProperty Name="iDept" ColumnName="iDept" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbtoflags">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtoflag">
+              <MappingFragment StoreEntitySet="dbtoflag">
+                <ScalarProperty Name="sFlag" ColumnName="sFlag" />
+                <ScalarProperty Name="iFlag" ColumnName="iFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbtogenders">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtogender">
+              <MappingFragment StoreEntitySet="dbtogender">
+                <ScalarProperty Name="sGender" ColumnName="sGender" />
+                <ScalarProperty Name="iGender" ColumnName="iGender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbtogrades">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtograde">
+              <MappingFragment StoreEntitySet="dbtograde">
+                <ScalarProperty Name="sGrade" ColumnName="sGrade" />
+                <ScalarProperty Name="iGrade" ColumnName="iGrade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbtojobs">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtojob">
+              <MappingFragment StoreEntitySet="dbtojobs">
+                <ScalarProperty Name="sFile" ColumnName="sFile" />
+                <ScalarProperty Name="sNotes" ColumnName="sNotes" />
+                <ScalarProperty Name="sJobName" ColumnName="sJobName" />
+                <ScalarProperty Name="iDept" ColumnName="iDept" />
+                <ScalarProperty Name="iJob" ColumnName="iJob" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbtolasteducations">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtolasteducation">
+              <MappingFragment StoreEntitySet="dbtolasteducation">
+                <ScalarProperty Name="sLastEdu" ColumnName="sLastEdu" />
+                <ScalarProperty Name="iLastEdu" ColumnName="iLastEdu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbtomaritalstats">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtomaritalstat">
+              <MappingFragment StoreEntitySet="dbtomaritalstat">
+                <ScalarProperty Name="sMaritalStat" ColumnName="sMaritalStat" />
+                <ScalarProperty Name="iMaritalStat" ColumnName="iMaritalStat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbtoreligions">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtoreligion">
+              <MappingFragment StoreEntitySet="dbtoreligion">
+                <ScalarProperty Name="sReligion" ColumnName="sReligion" />
+                <ScalarProperty Name="iReligion" ColumnName="iReligion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbtovhcls">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbtovhcl">
+              <MappingFragment StoreEntitySet="dbtovhcl">
+                <ScalarProperty Name="sVh_Desc" ColumnName="sVh_Desc" />
+                <ScalarProperty Name="iVh_ID" ColumnName="iVh_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
