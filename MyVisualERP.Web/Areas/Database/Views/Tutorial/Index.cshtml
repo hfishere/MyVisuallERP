@@ -1,39 +1,84 @@
 ﻿@model IEnumerable<My.DAL.dbtutorial>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tutorial"; <!-- Ganti sesuai dengan nama controller-->
 }
 
-<h2>Index</h2>
+<!-- Insert section styles -->
+@section styles {
+    <!-- DataTable CSS-->
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+}
 
+<!-- <h2>Index</h2>  //Hapus Bagian ini-->
+<!-- Hapus Bagian ini
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*  @Html.ActionLink("Create New", "Create")   *@
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.sName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.sAddress)
-        </th>
-        <th></th>
-    </tr>
+-->
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.sName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sAddress)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pID })
-        </td>
-    </tr>
+<!-- Ganti dengan ini -->
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title">List of Tutorials</h3> <!-- Ganti textnya -->
+    </div>
+    <div class="box-body">
+        <p>
+            <a href="@Url.Action("Create")" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus"></span> Add New
+            </a>
+        </p> <!-- Sampai sini-->
+
+        <table class="table table-bordered table-hover nowrap"><!-- Tambahin table-bordered, table-hover, dan nowrap -->
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.sName) <!-- Ini text di Head, Bisa diganti-->
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.sAddress) <!-- Ini text di Head, Bisa diganti -->
+                    </th>
+                    <th>Action</th> <!-- Untuk nambahin head Action-->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.sName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.sAddress)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.pID }, new { @class = "btn btn-primary btn-xs" })
+                            @Html.ActionLink("Details", "Details", new { id = item.pID }, new { @class = "btn btn-success btn-xs" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.pID }, new { @class = "btn btn-danger btn-xs" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    <!-- Cut Bagian bawah ini -->
+    </div><!-- /.box-body -->
+</div> <!-- Sampai sini -->
+
+<!-- Insert section scripts -->
+@section scripts {
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
+
+    <!-- DataTable -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.table').DataTable({
+                responsive: true,
+                language: {
+                    searchPlaceholder: "Search"
+                }
+            });
+        });
+    </script>
 }
-
-</table>
