@@ -4,12 +4,38 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3720b12d361a4321814946a078ed3c0b" Name="Diagram1" ZoomLevel="77">
-        <EntityTypeShape EntityType="dbmyvisualerpModel.dbemployee" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtodept" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtutorial" Width="1.5" PointX="5.25" PointY="2.375" />
+      <Diagram DiagramId="3720b12d361a4321814946a078ed3c0b" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbbuilding" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbcourier" Width="1.5" PointX="7.5" PointY="10.125" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbemployee" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbempstat" Width="1.5" PointX="3" PointY="1.875" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbroom" Width="1.5" PointX="3" PointY="15" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtodelarea" Width="1.5" PointX="5.25" PointY="16.875" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtodept" Width="1.5" PointX="3" PointY="23" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtoflag" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtogender" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtograde" Width="1.5" PointX="3" PointY="9.625" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtojob" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtolasteducation" Width="1.5" PointX="3" PointY="20.75" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtomaritalstat" Width="1.5" PointX="3" PointY="18.375" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtoreligion" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtovhcl" Width="1.5" PointX="5.25" PointY="4.625" />
+        <EntityTypeShape EntityType="dbmyvisualerpModel.dbtutorial" Width="1.5" PointX="7.75" PointY="0.75" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbemployee_ibfk_8" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbroom_ibfk_1" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbcourier_ibfk_1" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbcourier_ibfk_2" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbcourier_ibfk_3" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbemployee_ibfk_1" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbemployee_ibfk_10" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbemployee_ibfk_2" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbemployee_ibfk_3" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbemployee_ibfk_4" />
         <AssociationConnector Association="dbmyvisualerpModel.dbemployee_ibfk_5" />
-        <EntityTypeShape EntityType="dbmyvisualerpModel.dbempstat" Width="1.5" PointX="3.375" PointY="4.75" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbemployee_ibfk_6" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbemployee_ibfk_7" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbemployee_ibfk_9" />
+        <AssociationConnector Association="dbmyvisualerpModel.dbtojobs_ibfk_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

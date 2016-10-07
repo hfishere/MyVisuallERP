@@ -14,6 +14,12 @@ namespace My.DAL
     
     public partial class dbemployee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public dbemployee()
+        {
+            this.dbcouriers = new HashSet<dbcourier>();
+        }
+    
         public long iEmpSysID { get; set; }
         public string sEmpAttdID { get; set; }
         public string sEmpCardNumber { get; set; }
@@ -37,11 +43,22 @@ namespace My.DAL
         public byte iGrade { get; set; }
         public Nullable<byte> iJob { get; set; }
         public int iBldSysID { get; set; }
-        public int iRmSysID { get; set; }
+        public Nullable<int> iRmSysID { get; set; }
         public Nullable<System.DateTime> dEmpJn { get; set; }
         public byte iEmpStat { get; set; }
         public string sPictLink { get; set; }
     
+        public virtual dbbuilding dbbuilding { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dbcourier> dbcouriers { get; set; }
+        public virtual dbtogender dbtogender { get; set; }
+        public virtual dbempstat dbempstat { get; set; }
+        public virtual dbtomaritalstat dbtomaritalstat { get; set; }
+        public virtual dbtoreligion dbtoreligion { get; set; }
+        public virtual dbtolasteducation dbtolasteducation { get; set; }
         public virtual dbtodept dbtodept { get; set; }
+        public virtual dbtojob dbtojob { get; set; }
+        public virtual dbtograde dbtograde { get; set; }
+        public virtual dbroom dbroom { get; set; }
     }
 }

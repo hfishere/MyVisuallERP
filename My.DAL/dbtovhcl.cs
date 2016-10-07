@@ -12,23 +12,18 @@ namespace My.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class dbtodept
+    public partial class dbtovhcl
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public dbtodept()
+        public dbtovhcl()
         {
-            this.dbemployees = new HashSet<dbemployee>();
-            this.dbtojobs = new HashSet<dbtojob>();
+            this.dbcouriers = new HashSet<dbcourier>();
         }
     
-        public byte iDept { get; set; }
-        public string sDept { get; set; }
-        public string sNotes { get; set; }
-        public string sFile { get; set; }
+        public byte iVh_ID { get; set; }
+        public string sVh_Desc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<dbemployee> dbemployees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<dbtojob> dbtojobs { get; set; }
+        public virtual ICollection<dbcourier> dbcouriers { get; set; }
     }
 }

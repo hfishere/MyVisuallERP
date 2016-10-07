@@ -14,7 +14,16 @@ namespace My.DAL
     
     public partial class dbempstat
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public dbempstat()
+        {
+            this.dbemployees = new HashSet<dbemployee>();
+        }
+    
         public byte iEmpStat { get; set; }
         public string sEmpStat { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dbemployee> dbemployees { get; set; }
     }
 }
