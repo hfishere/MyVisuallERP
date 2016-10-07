@@ -57,6 +57,9 @@
     <Compile Include="dbemployee.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="dbempstat.cs">
+      <DependentUpon>ERPModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="dbtodept.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>

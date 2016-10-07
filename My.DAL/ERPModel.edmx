@@ -37,6 +37,13 @@
           <Property Name="iEmpStat" Type="utinyint" Nullable="false" />
           <Property Name="sPictLink" Type="varchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="dbempstat">
+          <Key>
+            <PropertyRef Name="iEmpStat" />
+          </Key>
+          <Property Name="iEmpStat" Type="utinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sEmpStat" Type="varchar" MaxLength="25" />
+        </EntityType>
         <EntityType Name="dbtodept">
           <Key>
             <PropertyRef Name="iDept" />
@@ -54,10 +61,27 @@
           <Property Name="sName" Type="varchar" MaxLength="30" />
           <Property Name="sAddress" Type="varchar" MaxLength="75" />
         </EntityType>
+        <Association Name="dbemployee_ibfk_5">
+          <End Role="dbtodept" Type="Self.dbtodept" Multiplicity="1" />
+          <End Role="dbemployee" Type="Self.dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtodept">
+              <PropertyRef Name="iDept" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iDept" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="dbmyvisualerpModelStoreContainer">
           <EntitySet Name="dbemployee" EntityType="Self.dbemployee" Schema="dbmyvisualerp" store:Type="Tables" />
+          <EntitySet Name="dbempstat" EntityType="Self.dbempstat" Schema="dbmyvisualerp" store:Type="Tables" />
           <EntitySet Name="dbtodept" EntityType="Self.dbtodept" Schema="dbmyvisualerp" store:Type="Tables" />
           <EntitySet Name="dbtutorial" EntityType="Self.dbtutorial" Schema="dbmyvisualerp" store:Type="Tables" />
+          <AssociationSet Name="dbemployee_ibfk_5" Association="Self.dbemployee_ibfk_5">
+            <End Role="dbtodept" EntitySet="dbtodept" />
+            <End Role="dbemployee" EntitySet="dbemployee" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -67,6 +91,11 @@
           <EntitySet Name="dbemployees" EntityType="dbmyvisualerpModel.dbemployee" />
           <EntitySet Name="dbtodepts" EntityType="dbmyvisualerpModel.dbtodept" />
           <EntitySet Name="dbtutorials" EntityType="dbmyvisualerpModel.dbtutorial" />
+          <AssociationSet Name="dbemployee_ibfk_5" Association="dbmyvisualerpModel.dbemployee_ibfk_5">
+            <End Role="dbtodept" EntitySet="dbtodepts" />
+            <End Role="dbemployee" EntitySet="dbemployees" />
+          </AssociationSet>
+          <EntitySet Name="dbempstats" EntityType="dbmyvisualerpModel.dbempstat" />
         </EntityContainer>
         <EntityType Name="dbemployee">
           <Key>
@@ -99,6 +128,7 @@
           <Property Name="dEmpJn" Type="DateTime" />
           <Property Name="iEmpStat" Type="Byte" Nullable="false" />
           <Property Name="sPictLink" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbtodept" Relationship="dbmyvisualerpModel.dbemployee_ibfk_5" FromRole="dbemployee" ToRole="dbtodept" />
         </EntityType>
         <EntityType Name="dbtodept">
           <Key>
@@ -108,6 +138,7 @@
           <Property Name="sDept" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="sNotes" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
           <Property Name="sFile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbemployees" Relationship="dbmyvisualerpModel.dbemployee_ibfk_5" FromRole="dbtodept" ToRole="dbemployee" />
         </EntityType>
         <EntityType Name="dbtutorial">
           <Key>
@@ -116,6 +147,25 @@
           <Property Name="pID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="sName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="sAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="dbemployee_ibfk_5">
+          <End Type="dbmyvisualerpModel.dbtodept" Role="dbtodept" Multiplicity="1" />
+          <End Type="dbmyvisualerpModel.dbemployee" Role="dbemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbtodept">
+              <PropertyRef Name="iDept" />
+            </Principal>
+            <Dependent Role="dbemployee">
+              <PropertyRef Name="iDept" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="dbempstat">
+          <Key>
+            <PropertyRef Name="iEmpStat" />
+          </Key>
+          <Property Name="iEmpStat" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sEmpStat" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -172,6 +222,14 @@
                 <ScalarProperty Name="sAddress" ColumnName="sAddress" />
                 <ScalarProperty Name="sName" ColumnName="sName" />
                 <ScalarProperty Name="pID" ColumnName="pID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbempstats">
+            <EntityTypeMapping TypeName="dbmyvisualerpModel.dbempstat">
+              <MappingFragment StoreEntitySet="dbempstat">
+                <ScalarProperty Name="sEmpStat" ColumnName="sEmpStat" />
+                <ScalarProperty Name="iEmpStat" ColumnName="iEmpStat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

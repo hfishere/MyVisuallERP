@@ -41,5 +41,7 @@ namespace My.DAL
         public Nullable<System.DateTime> dEmpJn { get; set; }
         public byte iEmpStat { get; set; }
         public string sPictLink { get; set; }
+    
+        public virtual dbtodept dbtodept { get; set; }
     }
 }
